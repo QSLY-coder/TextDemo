@@ -12,18 +12,14 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+//编辑界面
 public class EditActivity extends AppCompatActivity implements View.OnClickListener {
     private Intent intent;
     private String title;
-    private int state;
     private File file;
-    private ImageButton save_btn, cancel_btn;
     private EditText editText;
-    private byte[] buffer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +27,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_edit);
         findID();
         intent = getIntent();
-        state = intent.getIntExtra("state", 1);
+        int state = intent.getIntExtra("state", 1);
         title = intent.getStringExtra("title");
         System.out.println("获取到的title为"+title);
         intent.removeExtra("title");
@@ -42,7 +38,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             FileInputStream fin = null;
             try {
                 fin = new FileInputStream(file);
-                buffer = new byte[fin.available()];
+                byte[] buffer = new byte[fin.available()];
                 fin.read(buffer);
                 String data = new String(buffer);
                 editText.setText(data);
@@ -96,18 +92,11 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void findID() {
-        save_btn = findViewById(R.id.save_btn);
+        ImageButton save_btn = findViewById(R.id.save_btn);
         save_btn.setOnClickListener(this);
-        cancel_btn = findViewById(R.id.cancel_btn);
+        ImageButton cancel_btn = findViewById(R.id.cancel_btn);
         cancel_btn.setOnClickListener(this);
         editText = findViewById(R.id.editText);
     }
 
-    public void newText() {
-
-    }
-
-    public void editText() {
-
-    }
 }
