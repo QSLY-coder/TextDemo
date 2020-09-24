@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         searchFile(file);//遍历搜索所有.txt文件
 
         findID();
-        findID();
         //显示主菜单
         arrayAdapter = new ArrayAdapter<>(this, R.layout.listbuild, fileName);
         mainList.setAdapter(arrayAdapter);
