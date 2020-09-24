@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         searchFile(file);//遍历搜索所有.txt文件
 
         findID();
-
+        findID();
         //显示主菜单
         arrayAdapter = new ArrayAdapter<>(this, R.layout.listbuild, fileName);
         mainList.setAdapter(arrayAdapter);
@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menu.add(0, 1, 0, "删除");
         super.onCreateContextMenu(menu, v, menuInfo);
     }
+
     //上下文菜单Item点击事件
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
@@ -155,8 +156,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 Toast.makeText(MainActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
                                 fileName.remove(position);
                                 arrayAdapter.notifyDataSetChanged();
-                            } else Toast.makeText(MainActivity.this, "删除失败！", Toast.LENGTH_SHORT).show();
-                        } else Toast.makeText(MainActivity.this, "删除失败！文件不存在", Toast.LENGTH_SHORT).show();
+                            } else
+                                Toast.makeText(MainActivity.this, "删除失败！", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(MainActivity.this, "删除失败！文件不存在", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.show();
